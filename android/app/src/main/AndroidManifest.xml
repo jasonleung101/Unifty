@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jasonleung101.unify.unify">
+    package="com.jasonleung101.unify">
    <application
         android:label="unify"
         android:icon="@mipmap/ic_launcher">

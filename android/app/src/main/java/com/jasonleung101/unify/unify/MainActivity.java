@@ -1,4 +1,4 @@
-package com.jasonleung101.unify.unify;
+package com.jasonleung101.unify;
 
 import io.flutter.embedding.android.FlutterActivity;
 

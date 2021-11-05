@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "770715389542",
+    "project_id": "unify-c3556",
+    "storage_bucket": "unify-c3556.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770715389542:android:8c52589bb64921650be7a7",
+        "android_client_info": {
+          "package_name": "com.jasonleung101.unify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770715389542-h6i579qurko426hcmbr57742d11u7vsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNGGvsT6-pGXDq8WXE4vaRgVwNzD1vh9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770715389542-h6i579qurko426hcmbr57742d11u7vsi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
