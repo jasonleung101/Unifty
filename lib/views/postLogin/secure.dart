@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:unify/controller/user_controller.dart';
-import 'package:unify/widgets/common.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
-
-  final UserController _userController = Get.put(UserController());
+class SecurePage extends StatelessWidget {
+  const SecurePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,40 +11,29 @@ class SignInPage extends StatelessWidget {
       backgroundColor: Colors.grey[850],
       body: SafeArea(
         bottom: false,
-        child: Container(
+        child: SizedBox(
           width: 1.sw,
           height: 1.sh,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: (1 / 3).sh,
-              ),
-              Text(
-                'FlutterFire',
+              const Text(
+                'This is secure shell',
                 style: TextStyle(
-                  color: Colors.yellow[700],
-                  fontSize: 36.sp,
-                ),
-              ),
-              Text(
-                'Authentication',
-                style: TextStyle(
-                  color: Colors.orange[800],
-                  fontSize: 36.sp,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(
-                height: (1 / 3).sh,
+                height: 20.h,
               ),
               SizedBox(
                 width: (2 / 3).sw,
                 child: ElevatedButton(
                   onPressed: () {
-                    Common.loadingDialog();
-                    _userController.signInWithGoogle();
+                    Get.back();
                   },
                   child: Text(
-                    'Sign in with Google',
+                    'Back',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18.sp,

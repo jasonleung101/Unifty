@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "770715389542-l51bqie5578m5mrafrjpd5e2rik1rkom.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jasonleung101.unify",
+            "certificate_hash": "bb151d94b920a3c50c2a8ff02aaa751092bb18a6"
+          }
+        },
+        {
           "client_id": "770715389542-h6i579qurko426hcmbr57742d11u7vsi.apps.googleusercontent.com",
           "client_type": 3
         }
