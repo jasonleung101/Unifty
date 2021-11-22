@@ -16,6 +16,7 @@ class UserController extends GetxController {
   final Rx<User?> firebaseUser = Rx<User?>(null);
   final isDeviceSupported = false.obs;
   final authorized = false.obs;
+  final userIdFromFirebase = "".obs;
 
   @override
   void onInit() {
@@ -40,9 +41,9 @@ class UserController extends GetxController {
       idToken: googleAuth?.idToken,
     );
 
-    await auth.signInWithCredential(credential).then((value) {
+    await auth.signInWithCredential(credential).then((value) async {
       firebaseUser(value.user);
-      getUsername();
+      await getUsername();
     }).catchError((onError) {
       Get.snackbar(
         "Error while sign in ",
@@ -75,13 +76,14 @@ class UserController extends GetxController {
     }
   }
 
-  void getUsername() {
+  Future<void> getUsername() async {
     CollectionReference _users = FirebaseFirestore.instance.collection('users');
     bool _isExist = false;
-    _users.get().then((value) {
-      for (var element in value.docs) {
-        (element.data() as Map).forEach((key, value) {
+    await _users.get().then((value) {
+      for (var record in value.docs) {
+        (record.data() as Map).forEach((key, value) {
           if (key == 'email' && value == firebaseUser()?.email) {
+            userIdFromFirebase(record.id);
             _isExist = true;
           }
         });
@@ -90,6 +92,8 @@ class UserController extends GetxController {
     Get.back();
     if (_isExist) {
       Get.to(() => HomePage());
+    } else {
+      Get.to(() => CreateUserPage());
     }
   }
 
@@ -100,6 +104,7 @@ class UserController extends GetxController {
       'name': name,
       'uid': firebaseUser.value?.uid,
     }).then((value) {
+      userIdFromFirebase(value.id);
       Get.to(() => HomePage());
     }).catchError((onError) {
       Get.snackbar(

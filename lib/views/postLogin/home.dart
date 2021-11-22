@@ -22,6 +22,15 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
+                'Record Id: ${_userController.userIdFromFirebase.value}',
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
                 'User ID: ${_userController.firebaseUser.value?.uid}',
                 style: const TextStyle(
                   color: Colors.white,
