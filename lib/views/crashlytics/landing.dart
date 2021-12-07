@@ -1,54 +1,41 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:unify/controller/user_controller.dart';
-import 'package:unify/views/crashlytics/landing.dart';
-import 'package:unify/widgets/common.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
+class CrashlyticsLandingPage extends StatelessWidget {
+  CrashlyticsLandingPage({Key? key}) : super(key: key);
 
-  final UserController _userController = Get.put(UserController());
+  String _crashlyticsId = 'crashlytics';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[850],
+      appBar: AppBar(
+        title: Text('Test Crashlytics'),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.grey[800],
+      ),
       body: SafeArea(
         bottom: false,
-        child: Container(
+        child: SizedBox(
           width: 1.sw,
           height: 1.sh,
           child: Column(
             children: [
+              Text(_crashlyticsId),
               SizedBox(
-                height: (1 / 3).sh,
-              ),
-              Text(
-                'FlutterFire',
-                style: TextStyle(
-                  color: Colors.yellow[700],
-                  fontSize: 36.sp,
-                ),
-              ),
-              Text(
-                'Demo',
-                style: TextStyle(
-                  color: Colors.orange[800],
-                  fontSize: 36.sp,
-                ),
-              ),
-              SizedBox(
-                height: (1 / 3).sh,
+                height: 16.h,
               ),
               SizedBox(
                 width: (2 / 3).sw,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.to(() => CrashlyticsLandingPage());
+                    FirebaseCrashlytics.instance.crash();
                   },
                   child: Text(
-                    'Test Firebase Crashlytics',
+                    'Tap here to Manually Crash',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18.sp,
@@ -76,13 +63,44 @@ class SignInPage extends StatelessWidget {
                 width: (2 / 3).sw,
                 child: ElevatedButton(
                   onPressed: () {
-                    Common.loadingDialog();
-                    _userController.signInWithGoogle().catchError((e) {
-                      Get.back();
-                    });
+                    throw Error();
+                    // List<String> test = ['a', 'b', 'c'];
+                    // final getString = test[4];
                   },
                   child: Text(
-                    'Sign in with Google',
+                    'Tap here to make error',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      const StadiumBorder(),
+                    ),
+                    backgroundColor: MaterialStateProperty.all(
+                      Colors.white,
+                    ),
+                    padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(
+                        vertical: 12.h,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
+              SizedBox(
+                width: (2 / 3).sw,
+                child: ElevatedButton(
+                  onPressed: () {
+                    List<String> test = ['a', 'b', 'c'];
+                    final getString = test[4];
+                  },
+                  child: Text(
+                    'Tap here to make error',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18.sp,
